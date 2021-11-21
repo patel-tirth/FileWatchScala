@@ -1,0 +1,21 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/log-data-pipeline_2.13-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FileEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/FileEvent.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FileAdapter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/FileAdapter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/Main$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	testFile.txt[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/testFile.txt[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/Main$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FileListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/FileListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FileWatcher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes/FileWatcher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

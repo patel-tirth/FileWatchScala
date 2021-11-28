@@ -10,11 +10,11 @@ import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
 import com.typesafe.config.ConfigFactory
 import org.apache.commons.io.IOUtils
-
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.AmazonClientException
 import com.amazonaws.AmazonServiceException
+
 import java.io.File
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -25,12 +25,14 @@ import java.io.{File, FileOutputStream}
 import FileMonitoring.{FileAdapter, FileEvent, FileWatcher}
 import akka.{Done, NotUsed}
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
-
 import akka.util.ByteString
 import com.amazonaws.regions.Regions
 import com.amazonaws.services.config.model.Source
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
+
+import java.util.StringTokenizer
+import scala.io.Source
 
 
 class logFileExtraction extends Actor with ActorLogging{
@@ -61,8 +63,12 @@ class logFileExtraction extends Actor with ActorLogging{
       val reader = new BufferedReader(new InputStreamReader(obj.getObjectContent()))
       var line = reader.readLine
       while (line!=null) {
-        println(line)
+        //println(line)
+        val list=line.toList
         line = reader.readLine
+
+
+
       }
 
 

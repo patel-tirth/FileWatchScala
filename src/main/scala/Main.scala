@@ -1,3 +1,4 @@
+import FileMonitoring.{FileAdapter, FileEvent, FileWatcher}
 import org.slf4j.{Logger, LoggerFactory}
 
 import java.io.{File, FileWriter}

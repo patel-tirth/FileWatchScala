@@ -10,17 +10,15 @@ import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
 import com.typesafe.config.ConfigFactory
 
-object Main extends App{
 
-}
 
 
 object logFileWatcher{
-  def props(pullLogs: ActorRef): Props = Props(new logFileWatcher(pullLogs))
+  def props(pullLogs: ActorRef, path:String): Props = Props(new logFileWatcher(pullLogs,path))
 }
 
 
-class logFileWatcher(pullLogs: ActorRef) extends Actor with ActorLogging{
+class logFileWatcher(pullLogs: ActorRef, path:String) extends Actor with ActorLogging{
 
   log.debug("file watcher started running!")
 
@@ -46,6 +44,20 @@ class logFileWatcher(pullLogs: ActorRef) extends Actor with ActorLogging{
 
 
   }
+
+
+}
+
+
+object Main extends App{
+  val config = ConfigFactory.load("application")
+  val path:String = config.getString("s3.folder_path")
+
+  val system=ActorSystem("logFileWatcherSystem")
+  val pullLogs=system.actorOf(Props[logFileExtraction], name="pullLogs")
+  val filewatcher=system.actorOf(logFileWatcher.props(pullLogs,path), name="filewatcher")
+  filewatcher ! "monior"
+
 
 
 }

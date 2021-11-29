@@ -1,19 +1,2 @@
-[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/aynajain/Desktop/CS441/Course Project/FileWatchScala/target/scala-2.13/classes.bak[0m
-[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FileListener.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	logFileWatcher$$anonfun$receive$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FileWatcher.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	logFileWatcher$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FileEvent.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	logFileWatcher.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FileAdapter.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$$anon$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	extractS3data.class[0m
-[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/aynajain/Desktop/CS441/Course Project/FileWatchScala/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/tirth/Fall2021/CS441/Log-Data-Pipeline/target/scala-2.13/classes.bak[0m

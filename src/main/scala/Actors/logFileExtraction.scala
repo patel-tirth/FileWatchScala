@@ -64,13 +64,20 @@ class logFileExtraction extends Actor with ActorLogging{
       var line = reader.readLine
       while (line!=null) {
         //println(line)
-        val list=line.toList
+        if(line.contains("WARN")){
+          println(line)
+          implementKafka(line)
+        }
+        if(line.contains("ERROR")){
+          println(line)
+        }
         line = reader.readLine
-
-
-
       }
 
+
+  }
+
+  def implementKafka(line: String):Unit = {
 
   }
 

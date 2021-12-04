@@ -59,6 +59,7 @@ class FileWatcher(val folder: File) extends Runnable{
   }
 
   def watch(): Unit = {
+    logger.info("inside watch function")
     if(folder.exists()){
       val thread = new Thread(this)
       thread.setDaemon(true)

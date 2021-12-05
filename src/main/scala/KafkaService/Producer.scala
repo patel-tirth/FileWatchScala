@@ -28,7 +28,7 @@ class Producer {
      properties.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer")
      properties.put("acks","all")
   properties.put("security.protocol",config.getString("kafka.protocol"))
-//  properties.put("ssl.truststore.location",config.getString("kafka.trustStoreLocation"))
+  properties.put("ssl.truststore.location",config.getString("kafka.trustStoreLocation"))
   val producer = new KafkaProducer[String,String](properties)
 
 
@@ -44,6 +44,7 @@ class Producer {
 //    try {
 //      try {
         println(message)
+        logger.info(message)
         val record = new ProducerRecord[String,String](config.getString("kafka.topic"), "key", message)
         producer.send(record)
 //      }

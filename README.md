@@ -15,6 +15,25 @@ The main aim of this projeect is to notify the stakeholders via email in real ti
 - SBT installed on your system
 - AWS CLI installed and configured on your system
 
+## Project Structure
+
+src/main/resources/
+
+#### application.conf
+contains Kafka bootstrapserver broker strings and kafka topic which are preconfigured while downloading and configuring kafka and are use in the program for AWS Apache Kafka processing.
+
+src/main/scala/
+
+#### Actors
+LogFileWatcher - 
+LogFileExtraction - 
+
+#### KafkaService - 
+Producer - 
+
+
+
+
 ## Instructions
 
 #### Deployed the Log generator on EC2 to produce 10 logs at a time in S3 bucket file "loggenerator": [LogGenerator](https://github.com/AynaJain/LogGenerator)
@@ -85,6 +104,9 @@ The main aim of this projeect is to notify the stakeholders via email in real ti
     [success] Total time: 10 s, completed Dec 4, 2021, 11:54:07 PM
     ```
 15. After it is done generating the command on ssh terminal it will generate a .log file inside the S3 bucket with the same log messages generated on the terminal above.
+
+
+
 
 
 

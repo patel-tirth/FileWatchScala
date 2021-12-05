@@ -104,7 +104,9 @@ Producer -
     WARNING: JAXB is unavailable. Will fallback to SDK implementation which may be less performant.If you are using Java 9+, you will need to include javax.xml.bind:jaxb-api as a dependency.
     [success] Total time: 10 s, completed Dec 4, 2021, 11:54:07 PM
     ```
-15. After it is done generating the command on ssh terminal it will generate a .log file inside the S3 bucket with the same log messages generated on the terminal above.
+15. After it is done generating the logs on ssh terminal it will generate a .log file inside the S3 bucket with the same log messages generated on the terminal above.
+
+#### Installing and configuring Kafka
 
 
 

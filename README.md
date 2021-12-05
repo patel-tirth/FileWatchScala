@@ -59,6 +59,8 @@ The main aim of this projeect is to notify the stakeholders via email in real ti
    - Git 
      Command - ``` sudo yum install git -y ``` (when using Amazon Linux 2 AMI)
 12. Now, we have everything installed, let us clone our LogGenerator on EC2 using command -
-    ``` git clone https://github.com/AynaJain/LogGenerator ```
+    ``` 
+    git clone https://github.com/AynaJain/LogGenerator 
+    ```
 
 

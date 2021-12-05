@@ -17,10 +17,9 @@ The main aim of this projeect is to notify the stakeholders via email in real ti
 
 ## Instructions
 
-#### Deployed the Log generator on EC2 to produce 10 logs at a time in S3 bucket file "loggenerator":
-####  [LogGenerator](https://github.com/AynaJain/LogGenerator)
+#### Deployed the Log generator on EC2 to produce 10 logs at a time in S3 bucket file "loggenerator": [LogGenerator](https://github.com/AynaJain/LogGenerator)
 
-#### Deploying Log Generator on EC2 and generating the log file on S3:
+#### Instructions to deploy the Log Generator on EC2 and generating the log file on S3:
 
 1. Create S3 bucket.
 2. Launch an EC2 instance (Make sure to download the private key file).

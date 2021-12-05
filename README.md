@@ -62,5 +62,28 @@ The main aim of this projeect is to notify the stakeholders via email in real ti
     ``` 
     git clone https://github.com/AynaJain/LogGenerator 
     ```
+13. Once we have our LogGenerator on EC2. cd into LogGenerator directory using ``` cd LogGenerator ``` 
+
+14. This code will generate the follwing output on the ssh terminal:
+    ```
+    [info] running GenerateLogData 
+    23:54:01.919 [run-main-0] INFO  GenerateLogData$ - Log data generator started...
+    23:54:02.293 [run-main-0] WARN  HelperUtils.Parameters$ - Max count 10 is used to create records instead of timeouts
+    23:54:02.687 [scala-execution-context-global-73] WARN  HelperUtils.Parameters$ - s%]s,+2k|D}K7b/XCwG&@7HDPR8z
+    23:54:03.192 [scala-execution-context-global-73] INFO  HelperUtils.Parameters$ - ;kNI&V%v<c#eSDK@lPY(
+    23:54:03.579 [scala-execution-context-global-73] INFO  HelperUtils.Parameters$ - l9]|92!uHUQ/IVcz~(;.Uz%K*5jTUd08
+    23:54:03.834 [scala-execution-context-global-73] INFO  HelperUtils.Parameters$ - G3sw7^U<^q^Cl!aMTDbNz<:$;?e<.0JD_'
+    23:54:04.229 [scala-execution-context-global-73] WARN  HelperUtils.Parameters$ - A><YFqpg+~"E1T
+    23:54:04.637 [scala-execution-context-global-73] DEBUG HelperUtils.Parameters$ - JrQB;P0"&+6;&Dk-
+    23:54:04.950 [scala-execution-context-global-73] INFO  HelperUtils.Parameters$ - OsI1`qAeU5H;\+
+    23:54:05.143 [scala-execution-context-global-73] INFO  HelperUtils.Parameters$ - [h!Q9PEY>L(NpKLBO"Gjo:=4kRXQ_tZ!
+    23:54:05.307 [scala-execution-context-global-73] INFO  HelperUtils.Parameters$ - B?y&C"C5rsb:2037;f&|vM#x?z|Ny|&<44Z8B&rF1#&M
+    23:54:05.656 [scala-execution-context-global-73] WARN  HelperUtils.Parameters$ - x2oBSI0/\%CdfV2%ChSsnZ7vJo=2qJqZ%."kbc!0ne`y&m
+    23:54:05.657 [run-main-0] INFO  GenerateLogData$ - Log data generation has completed after generating 10 records.
+    Dec 04, 2021 11:54:06 PM com.amazonaws.util.Base64 warn
+    WARNING: JAXB is unavailable. Will fallback to SDK implementation which may be less performant.If you are using Java 9+, you will need to include javax.xml.bind:jaxb-api as a dependency.
+    [success] Total time: 10 s, completed Dec 4, 2021, 11:54:07 PM
+    ```
+
 
 

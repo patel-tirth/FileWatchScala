@@ -34,7 +34,7 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % typesafeConfigVersion,
   "com.github.mifmif" % "generex" % generexVersion,
   "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
-  "org.apache.kafka" % "kafka-clients" % kafkaVersion,
+//  "org.apache.kafka" % "kafka-clients" % kafkaVersion,
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.lightbend.akka" %% "akka-stream-alpakka-cassandra" % "3.0.3", // Scala 2.12/2.13
@@ -47,12 +47,19 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-http-xml" % akkaHttpVersion,
-  "org.apache.kafka" % "kafka-clients" % "2.8.0",
-  "org.apache.kafka" % "kafka-streams" % "2.8.0",
-  "org.apache.kafka" %% "kafka-streams-scala" % "2.8.0",
+//  "org.apache.kafka" % "kafka-clients" % "2.8.0",
+//  "org.apache.kafka" % "kafka-streams" % "2.8.0",
+//  "org.apache.kafka" %% "kafka-streams-scala" % "2.8.0",
   "io.circe" %% "circe-core" % "0.14.1",
   "io.circe" %% "circe-generic" % "0.14.1",
-  "io.circe" %% "circe-parser" % "0.14.1"
+  "io.circe" %% "circe-parser" % "0.14.1",
+  "org.apache.spark" %% "spark-core" % "3.2.0",
+  "org.apache.spark" %% "spark-streaming" % "3.2.0",
+//  "org.apache.spark" %% "spark-streaming-kafka" % "1.6.2"
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-10
+   "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.2.0"
+
+
 
 
 )

@@ -1,0 +1,5 @@
+package KafkaService
+
+class Consumer {
+
+}

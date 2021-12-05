@@ -1,6 +1,6 @@
 package Actors
 
-import java.io.File
+import java.io.{File, FileWriter}
 import java.util.{Calendar, Date}
 import FileMonitoring.{FileAdapter, FileEvent, FileWatcher}
 import akka.{Done, NotUsed}
@@ -8,6 +8,8 @@ import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import akka.util.ByteString
 import com.amazonaws.regions.Regions
 import org.joda.time.DateTime
+
+import scala.annotation.tailrec
 //import com.amazonaws.services.config.model.Source
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
@@ -45,23 +47,55 @@ class LogFileWatcher(pullLogs: ActorRef, file:String) extends Actor with ActorLo
       monitor(pullLogs)
   }
 
-  def monitor(pullLogs: ActorRef): Unit = {
+  @tailrec
+  final def watch( logfileextractor: ActorRef, newTime:Date): Unit ={
     val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
+    val listing = s3.listObjects(bucket_name)
+    val summaries = listing.getObjectSummaries
+    var nTime = Calendar.getInstance().getTime
 
+    summaries.forEach(os => {
+      if (os.getLastModified.after(newTime)) {
+        logger.info("inside if modified")
+        logger.info(os.getKey)
+        nTime = os.getLastModified
 
-    val obj = s3.getObject(bucket_name, file)
+        logfileextractor ! os.getKey
+      }
+    })
+    watch(logfileextractor, nTime)
+  }
 
-    val data = Source.fromInputStream(obj.getObjectContent).mkString(sys.props("line.separator"))
-    logger.info(data)
+  def monitor(pullLogs: ActorRef): Unit = {
+    watch(pullLogs,Calendar.getInstance().getTime)
+
+//    val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
+//
+////    val obj = s3.getObject(bucket_name, file)
+//    val listing = s3.listObjects(bucket_name)
+////    val data = Source.fromInputStream(obj.getObjectContent)
+//    val format = new java.text.SimpleDateFormat("HH:mm:ss.SSS")
+//    var lastUpdatedTime : Date= Calendar.getInstance().getTime
+//    print(lastUpdatedTime)
+
+//    logger.info(data)
+//    val folder = new File("src/test")
+//    val testfile = new File(folder + "/test.txt")
+//    val writer = new FileWriter(testfile)
+//    writer.write(data)
 //    print(myData)
 //    val appended_data = myData + "06:55:06.035 [scala-execution-context-global-64] DEBUG  HelperUtils.Parameters$ - x2oBSI0/\\%CdfV2%ChSsnZ7vJo=2qJqZ%.\"kb"
 //    s3.putObject(bucket_name,"log.log",appended_data)
 //    while(true){
+////      logger.info("inside while")
 //      val summaries = listing.getObjectSummaries
-//      print(summaries)
+////      print(summaries)
 //      summaries.forEach(os => {
+////          print(os.getLastModified)
 //        if (os.getLastModified.after(lastUpdatedTime)) {
-//          print("modified")
+//          logger.info("inside if modified")
+//          logger.info(os.getKey)
+////          print("modified")
 //          lastUpdatedTime = Calendar.getInstance().getTime
 //        }
 //      })
@@ -91,23 +125,27 @@ class LogFileWatcher(pullLogs: ActorRef, file:String) extends Actor with ActorLo
   }
 }
 
-object Main extends App{
+object Entry{
+//
 
-  val config = ConfigFactory.load("application")
-  val path:String = config.getString("s3.folder_path")
+//  private val pullLogs = createActorExtractor()
+//  private val filewatcher = createActorWatcher()
+//  protected def createActorWatcher(): ActorRef =
+//    system.actorOf(LogFileWatcher.props(pullLogs, getFile), "filewatcher")
 
-  val getFile = args(0)
-  val system=ActorSystem("logFileWatcherSystem")
-  private val pullLogs= createActorExtractor()
-  private val filewatcher = createActorWatcher()
-  filewatcher ! "monitor"
+//  protected def createActorExtractor(): ActorRef =
+//    system.actorOf(LogFileExtraction.props(), name = "pulllogs")
 
-  // top level actor
-  protected def createActorWatcher(): ActorRef =
-    system.actorOf(LogFileWatcher.props(pullLogs, getFile) , "filewatcher")
+  def main(args: Array[String]): Unit = {
+    val system = ActorSystem("logFileWatcherSystem")
+    val config = ConfigFactory.load("application")
+    val path: String = config.getString("s3.folder_path")
+//    val getFile = args(0)
+//
+//    print(getFile)
+    val pullLogs = system.actorOf(LogFileExtraction.props(), name = "pulllogs")
+    val filewatcher =system.actorOf(LogFileWatcher.props(pullLogs, path), "filewatcher")
+    filewatcher ! "monitor"
 
-  protected def createActorExtractor(): ActorRef =
-    system.actorOf(LogFileExtraction.props(),name="pulllogs")
-
-
+  }
 }

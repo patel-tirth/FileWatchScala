@@ -1,9 +1,5 @@
 [0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/log-data-pipeline_2.13-0.1.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	S3[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/S3[0m
-[0m[[0m[0mdebug[0m] [0m[0m	S3/extractS3data.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/S3/extractS3data.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	test.log[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/test.log[0m
 [0m[[0m[0mdebug[0m] [0m[0m	application.conf[0m
@@ -30,8 +26,10 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/Actors/LogFileWatcher.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	KafkaService[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/KafkaService[0m
-[0m[[0m[0mdebug[0m] [0m[0m	KafkaService/KafkaExtraction.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/KafkaService/KafkaExtraction.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaService/Consumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/KafkaService/Consumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaService/Producer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/KafkaService/Producer.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	testFile.txt[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /Users/tirth/Fall2021/CS441/FileWatchScala/target/scala-2.13/classes/testFile.txt[0m
 [0m[[0m[0mdebug[0m] [0m[0m	FileMonitoring[0m

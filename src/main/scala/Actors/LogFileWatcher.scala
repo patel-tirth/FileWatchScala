@@ -19,27 +19,27 @@ import org.slf4j.{Logger, LoggerFactory}
 import com.amazonaws.services.s3.model.S3ObjectSummary
 //import scala.collection.JavaConversions._
 //import akka.stream.alpakka.s3.scaladsl.{S3, S3ClientIntegrationSpec, S3WireMockBase}
-import akka.stream.scaladsl.{Sink}
+//import akka.stream.scaladsl.{Sink}
 import com.amazonaws.services.s3.model.ObjectListing
-import software.amazon.awssdk.regions.Region
-import software.amazon.awssdk.regions.providers._
+//import software.amazon.awssdk.regions.Region
+//import software.amazon.awssdk.regions.providers._
 import com.amazonaws.services.s3.model.S3ObjectSummary
 import org.apache.commons.io.IOUtils
 import scala.io.Source
 // companion object
 object LogFileWatcher{
-  def props(pullLogs: ActorRef, file:String): Props = Props(new LogFileWatcher(pullLogs,file))
+  def props(pullLogs: ActorRef): Props = Props(new LogFileWatcher(pullLogs))
 }
 
 
-class LogFileWatcher(pullLogs: ActorRef, file:String) extends Actor with ActorLogging{
+class LogFileWatcher(pullLogs: ActorRef) extends Actor with ActorLogging{
   val logger: Logger = LoggerFactory.getLogger(this.getClass)
   log.debug("file watcher started running!")
 
-  val config = ConfigFactory.load()
+  val config = ConfigFactory.load("application")
   val bucket_name: String = config.getString("s3.bucket")
-  val file_path: String = config.getString("s3.file_path")
-  val key_name: String = config.getString("s3.key")
+//  val file_path: String = config.getString("s3.file_path")
+//  val key_name: String = config.getString("s3.key")
 
   override def receive: Receive = {
 //    case _ => log.info("Provide valid Input!")
@@ -139,12 +139,12 @@ object Entry{
   def main(args: Array[String]): Unit = {
     val system = ActorSystem("logFileWatcherSystem")
     val config = ConfigFactory.load("application")
-    val path: String = config.getString("s3.folder_path")
-//    val getFile = args(0)
-//
-//    print(getFile)
+////    val path: String = config.getString("s3.folder_path")
+////    val getFile = args(0)
+////
+////    print(getFile)
     val pullLogs = system.actorOf(LogFileExtraction.props(), name = "pulllogs")
-    val filewatcher =system.actorOf(LogFileWatcher.props(pullLogs, path), "filewatcher")
+    val filewatcher =system.actorOf(LogFileWatcher.props(pullLogs), "filewatcher")
     filewatcher ! "monitor"
 
   }

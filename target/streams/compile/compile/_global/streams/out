@@ -1,10 +1,5 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/tirth/Fall2021/CS441/FileWatchScala/src/main/scala/KafkaService/Producer.scala:8:35: object kafka010 is not a member of package org.apache.spark.streaming[0m
-[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.streaming.kafka010._[0m
-[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/tirth/Fall2021/CS441/FileWatchScala/src/main/scala/KafkaService/Producer.scala:9:35: object kafka010 is not a member of package org.apache.spark.streaming[0m
-[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent[0m
-[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/tirth/Fall2021/CS441/FileWatchScala/src/main/scala/KafkaService/Producer.scala:10:35: object kafka010 is not a member of package org.apache.spark.streaming[0m
-[0m[[0m[31merror[0m] [0m[0mimport org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe[0m
-[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
-[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/tirth/Fall2021/CS441/FileWatchScala/src/main/scala/FileMonitoring/FileWatcher.scala:18:7: A try without a catch or finally is equivalent to putting its body in a block; no exceptions are handled.[0m
+[0m[[0m[33mwarn[0m] [0m[0m      try {[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m1 deprecation (since 2.13.0); re-run with -deprecation for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

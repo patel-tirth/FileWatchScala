@@ -121,7 +121,25 @@ topic "LogDataTopic", which is a Kafka topic that is created while downloading a
     ```
 15. After it is done generating the logs on ssh terminal it will generate a .log file inside the S3 bucket with the same log messages generated on the terminal above.
 
-#### Installing and configuring Kafka
+#### Kafka 
+
+Run the following commands to start Kafka zookeeper and create a Kafka topic:
+``` 
+bin/zookeper-server-start.sh config/zookeeper.properties 
+kafka-server-start.sh config/server.properties
+bin/kafka-topics.sh --create --zookeeper 127.0.0.1:2181 replication-factor 2 --partitions 1 --topic LogDataTopic
+```
+
+Start the kafka producer:
+``` 
+kafka-console-producer.sh --broker-list 127.0.0.1:9092 --topic LogDataTopic
+```
+
+Start the Kafka consumer:
+```
+kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic LogDataTopic
+```
+
 
 
 

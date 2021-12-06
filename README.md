@@ -15,7 +15,7 @@
 The main aim of this project is to notify the stakeholders via email in real time when more than one ERROR or WARN messages appear within a certain length time window. The data is processed in a pipeline using services such as Akka, Kafka and Spark in order.
 
 ``` The second part of the project is linked below```
-### Spark Project -  [Spark Streaming Project Link] (https://github.com/patel-tirth/KafkaSparkStreaming)
+### Spark Project -  [Spark Streaming Project Link](https://github.com/patel-tirth/KafkaSparkStreaming)
 #### Prerequisites to build and run the project:
 - SBT installed on your system
 - AWS CLI installed and configured on your system

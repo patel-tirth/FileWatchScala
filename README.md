@@ -7,6 +7,7 @@
 | Ayna Jain | ajain85@uic.edu |
 | Tirth Patel | tpatel79@uic.edu |
 
+**Akka and Kafka code is explained in this video**
 | Youtube Link | https://youtu.be/ZcWVkD12RNE |
 | --- | --- |
 

@@ -1,6 +1,5 @@
 package Actors
 
-
 import com.typesafe.config.{Config, ConfigFactory}
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import com.amazonaws.regions.Regions
@@ -32,7 +31,6 @@ class LogFileExtraction extends Actor with ActorLogging{
   properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getString("kafka.bootstrapserver"))
   properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
   properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
-
 
   val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
 

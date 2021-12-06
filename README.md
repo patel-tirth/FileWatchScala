@@ -38,7 +38,9 @@ the function "runKafka".
 ```
 ```
 KafkaService/ 
-Producer - 
+Producer - This Kafka producer conatins all the properties of kafka that are defined for running the kafka server.
+It receives the extracted log messages from the LogFileExtraction actor and it publishes those messages to Kafka 
+topic "LogDataTopic", which is a Kafka topic that is created while downloading and configuring Kafka. 
 ```
 
 

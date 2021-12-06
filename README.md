@@ -26,8 +26,15 @@ configuring kafka and are use in the program for AWS Apache Kafka processing.
 src/main/scala/
 ```
 Actors/
-LogFileWatcher - 
-LogFileExtraction - 
+LogFileWatcher - LogFileWatcher monitors the S3 bucket for any new files added to the bucket by running the 
+project ``` LogGenerator ``` on EC2 instance using a tailrecursive function in the code which continuously 
+monitors the S3 bucket and notifies the next actor ``` LogFileExtraction ``` in loop if a new file is notified 
+in the bucket.
+
+LogFileExtraction - LogFileExtraction is called in loop whenever a new file is found in the S3 bucket. 
+The code in this file fetches the logs from the S3 object and read them line-by-line. It then extract the 
+logs which are of type "WARN" or "ERROR" and pass them to Kafka streams for furrther processing by calling 
+the function ``` runKafka ```.
 ```
 ```
 KafkaService/ 

@@ -19,7 +19,7 @@ The main aim of this projeect is to notify the stakeholders via email in real ti
 
 src/main/resources/
 ```
-application.conf/
+***application.conf/***
 contains Kafka bootstrapserver broker strings and kafka topic which are preconfigured while downloading and 
 configuring kafka and are use in the program for AWS Apache Kafka processing.
 ```

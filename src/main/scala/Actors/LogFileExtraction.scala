@@ -1,17 +1,22 @@
 package Actors
 
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
-import com.amazonaws.regions.Regions
-import com.amazonaws.services.s3.model.{ObjectMetadata, S3Object}
+
 import com.typesafe.config.{Config, ConfigFactory}
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
-import KafkaService.Producer
+import akka.Done
+import akka.kafka.ProducerSettings
+import akka.kafka.scaladsl.Producer
+import akka.stream.{ActorMaterializer, Materializer}
+import akka.stream.scaladsl.Source
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
+import org.apache.kafka.common.serialization.StringSerializer
 import org.slf4j.{Logger, LoggerFactory}
 
-import scala.io.Source
 import java.io.{BufferedReader, InputStreamReader}
+import java.util.Properties
+import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.util.matching.Regex
 
 object LogFileExtraction {
@@ -22,11 +27,12 @@ class LogFileExtraction extends Actor with ActorLogging{
   val config: Config = ConfigFactory.load("application")
   val logger: Logger = LoggerFactory.getLogger(this.getClass)
   val bucket_name: String = config.getString("s3.bucket")
-//  val file_path: String = config.getString("s3.file_path")
-//  val key_name: String = config.getString("s3.key")
 
-//  val filepath="/resources/test.log"
-//  val s3File="log.log"
+  val properties: Properties = new Properties()
+  properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getString("kafka.bootstrapserver"))
+  properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
+  properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getName)
+
 
   val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
 
@@ -34,23 +40,37 @@ class LogFileExtraction extends Actor with ActorLogging{
   val checkLogMessage : PartialFunction[String,String] = {
     case s: String if pattern.findFirstIn(s) != None => s
   }
-//  def sendToKafka : PartialFunction[String,Unit] = {
-//    case s  if s.nonEmpty  => implementKafka(s)
-//  }s
+
   override def receive: Receive = {
-    //val s3: AmazonS3 = AmazonS3ClientBuilder.standard.withRegion(Regions.US_EAST_1).build
     case file: String =>
-
       val obj = s3.getObject(bucket_name,file)
-
-      logger.info("sending s3 object to kafka")
+      logger.info("received s3 object key..")
 
       val reader = new BufferedReader(new InputStreamReader(obj.getObjectContent))
+      val data =  Stream.continually(reader.readLine()).takeWhile(_ != null).collect( checkLogMessage ).toList
+      logger.info("sending data to kafka..")
+      runKafka(data)
 
-       Stream.continually(reader.readLine()).takeWhile(_ != null).collect( checkLogMessage ).toList.foreach(s => {
-         new Producer().runKafka(s)
-       })
+  }
+  implicit val system: ActorSystem = ActorSystem("producer-sys")
+  implicit val mat: Materializer = ActorMaterializer()
+  implicit val ec: ExecutionContextExecutor = system.dispatcher
 
+//  val config = ConfigFactory.load()
+  val producerConfig = config.getConfig("akka.kafka.producer")
+  val producerSettings = ProducerSettings(producerConfig, new StringSerializer, new StringSerializer)
+
+  //  produce onComplete  {
+  //    case Success(_) => println("Done"); system.terminate()
+  //    case Failure(err) => println(err.toString); system.terminate()
+  //  }
+
+  def runKafka(data:List[String]): Unit ={
+    val produce: Future[Done] = {
+      Source(data)
+        .map(value => new ProducerRecord[String, String]("LogDataTopic", value.toString))
+        .runWith(Producer.plainSink(producerSettings))
+    }
   }
 
 }

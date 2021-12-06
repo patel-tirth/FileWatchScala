@@ -9,7 +9,9 @@
 
 **Akka and Kafka code is explained in this video**
 | Youtube Link | https://youtu.be/ZcWVkD12RNE |
-| --- | --- |
+
+**Running Kafka, Spark and sending email**
+| Youtube Link | https://youtu.be/XWBTjyXmY7U |
 
 ## Explanation
 

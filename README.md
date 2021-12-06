@@ -7,7 +7,8 @@
 | Ayna Jain | ajain85@uic.edu |
 | Tirth Patel | tpatel79@uic.edu |
 
-| Youtube Link | https://youtu.be/ZcWVkD12RNE | 
+| Youtube Link | https://youtu.be/ZcWVkD12RNE |
+| --- | --- |
 
 ## Explanation
 

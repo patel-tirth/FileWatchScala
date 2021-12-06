@@ -140,6 +140,12 @@ Start the Kafka consumer:
 kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic LogDataTopic
 ```
 
+Now, we have started the Kafka Producer and consumer. 
+Now, run the [LogGenerator](https://github.com/AynaJain/LogGenerator) program on EC2 using ``` sbt run ```
+Also, run this project using ``` sbt run ```
+
+LogGenerator will produce a .log file in the s3 bucket. ``` FileWatchScala ``` project created an actor system to monitor any incoming .log files inside the S3 bucket. As a new .log is found inside the bucket after the last program modified time. This actor ```LogFileWatcher ``` will send the file to another actor with the file time and actor reference. The file will be received to the actor ``` LogFileExtraction ``` . This actor will read the file line-by-line and extractor all the ERROR and WARN messages if more than 1 and then finally send it to Kakfa stream for further processing. Kafka producer will receive the stream of messages from ``` LogFileextraction ``` actor which will publish the log messages to Kafka topic ``` LogDataTopic ```. These messages can also be seen inside the kafka consumer that we started above. Although the aim to rum Spark is the consumer for these messages. Therefore, the Spark project when run using ``` sbt run ``` will read the data from the Kafka topic ``` LogDataTopic ```. 
+
 
 
 

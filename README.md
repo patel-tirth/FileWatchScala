@@ -54,7 +54,7 @@ topic "LogDataTopic", which is a Kafka topic that is created while downloading a
 
 ## Instructions
 
-#### Deployed the Log generator on EC2 to produce 10 logs at a time in S3 bucket file "loggenerator": [LogGenerator](https://github.com/patel-tirth/LogGenerationS3)
+#### Deploy the Log generator on EC2 to continuously produce logs in S3 bucket. "loggenerator": [LogGenerator](https://github.com/patel-tirth/LogGenerationS3)
 
 #### Instructions to deploy the Log Generator on EC2 and generating the log file on S3:
 

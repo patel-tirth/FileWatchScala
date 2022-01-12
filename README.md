@@ -2,7 +2,7 @@
 
 ## Contribution
 
-| Contributors | Email |
+<!-- | Contributors | Email | -->
 | --- | --- |
 <!-- | Ayna Jain | ajain85@uic.edu | -->
 | Tirth Patel | tpatel79@uic.edu |

@@ -1,6 +1,6 @@
 # Streaming Log Data Pipeline
 
-## Contribution
+<!-- ## Contribution -->
 
 <!-- | Contributors | Email | -->
 | --- | --- |
